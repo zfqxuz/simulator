@@ -18,12 +18,6 @@ int main(int argc, char* argv[]) {
     ifstream FILEIN1,FILEIN2;
     cout<<in1<<endl;
     cout<<out<<endl;
-//    string base="./";///home/zfq/study/3050/test2/";
-//    cout<<base+"fib.asm"<<endl;
-//    FILE* f;
-//    f=fopen("fib.in","w");
-//    fprintf(f,"%d",17);
-//    fclose(f);
     FILEIN1.open(in1);//argv[1]);
     FILEIN2.open(in2);//argv[2]);
 

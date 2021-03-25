@@ -27,7 +27,6 @@ void parser(int vm[],ifstream &infile, string outfile){
     reg[36]=0;
 
     while(vm[pc]!=0){
-        cout<<pc<<endl;
         string instruct=bitset<32>(vm[pc]).to_string();
         if(instruct.substr(0,6)=="000000"){
             pc=r_type_parser(instruct,pc,infile,outfile,vm);
@@ -126,10 +125,8 @@ int r_type_parser(const string& instruct,int pc,ifstream &infile, string outfile
 
             hi=a1*b1+((a1*b0+b1*a0)>>16);
             lo=((a1*b0+b1*a0)<<16)+a0*b0;
-            cout<<bitset<32>(hi)<<endl;
 
             if(flag){
-                cout<<"t"<<endl;
                 hi=0xffffffff-hi+1;
                 lo=0xffffffff-lo+1;
             }
@@ -355,6 +352,7 @@ void syscall(int i,ifstream &infile,string outfile,int*vm){
             f=fopen(outfile.c_str(), "a+");
             fprintf(f,"%d",a);
             fclose(f);
+            cout<<a<<endl;
 
             break;
         case 4:
@@ -371,6 +369,7 @@ void syscall(int i,ifstream &infile,string outfile,int*vm){
             getline(ss,string1,'\0');
             fprintf(f,"%s",string1.c_str());
             fclose(f);
+            cout<<string1<<endl;
             break;
         case 5:
             //read int
@@ -471,9 +470,8 @@ int rsp_type_parser(const string &instruct,int pc,int vm[]){
             b1=bitset<16>(rt>>16).to_ulong();
             hi=a1*b1+((a1*b0+b1*a0)>>16);
             lo=((a1*b0+b1*a0)<<16)+a0*b0;
-            cout<<bitset<32>(hi)<<endl;
             if(flag){
-                cout<<"t"<<endl;
+
                 hi=0xffffffff-hi+1;
                 lo=0xffffffff-lo+1;
             }
@@ -517,10 +515,8 @@ int rsp_type_parser(const string &instruct,int pc,int vm[]){
 
             hi=a1*b1+((a1*b0+b1*a0)>>16);
             lo=((a1*b0+b1*a0)<<16)+a0*b0;
-            cout<<bitset<32>(hi)<<endl;
 
             if(flag){
-                cout<<"t"<<endl;
                 hi=0xffffffff-hi+1;
                 lo=0xffffffff-lo+1;
             }
@@ -562,7 +558,7 @@ int rsp_type_parser(const string &instruct,int pc,int vm[]){
             }
             break;
         default:
-            cout<<"wtf?"<<endl;
+            break;
 
     }
     return pc;

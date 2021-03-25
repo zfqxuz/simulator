@@ -260,10 +260,8 @@ string inst2bin(string a,  map<string,int> &func_address_set,  map<string,char*>
         default:
             rst = "err";
     }
-    //cout<<"posinarray"<<hex<<&p[j.address+i]<<endl;
     p[j.address+i]=stol(rst,0,2);
 
-    //cout<<rst<<endl;
     return rst;
 }
 

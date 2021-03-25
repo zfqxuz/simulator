@@ -15,7 +15,7 @@ void func::clear(){
 }
 
 vector<func> process_text(ifstream &infile){
-    cout<<"processtest"<<endl;
+
     vector <func> funcs=write_func(infile);
     for(func i : funcs){
         if (i.label=="main"){
@@ -27,7 +27,6 @@ vector<func> process_text(ifstream &infile){
 
 
 vector<func> write_func(ifstream &  infile){
-    cout<<"write_func"<<endl;
     string line;
     vector<func> functions;
     func f;
@@ -40,7 +39,6 @@ vector<func> write_func(ifstream &  infile){
                line = modify(line);
            } else{break;}
         }
-        cout<<line<<endl;
 
         ///status decides if this is a data segment or text segment
         static bool status = true;
